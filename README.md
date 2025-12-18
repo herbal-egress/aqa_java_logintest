@@ -30,3 +30,9 @@ mvn clean test -Dbrowser=firefox
 
 # Запуск в Edge / Opera / Vivaldi (Chromium-based)
 mvn clean test -Dbrowser=chrome
+```
+## Генерация и просмотр Allure-отчёта
+После выполнения тестов:
+```bash
+mvn allure:serve
+```
