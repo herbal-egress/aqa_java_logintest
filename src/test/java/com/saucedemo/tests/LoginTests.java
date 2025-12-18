@@ -6,13 +6,14 @@ import com.saucedemo.pages.LoginPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/** добавил: Основной тестовый класс с 5 требуемыми сценариями. Каждый тест независимый. */
+// Основной тестовый класс с 5 сценариями. Каждый тест независимый.
 @Slf4j
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Тесты авторизации на SauceDemo")
 public class LoginTests extends BaseTest {
 
@@ -25,6 +26,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("1. Успешный логин standard_user")
     @Description("Проверка успешной авторизации и перехода на страницу инвентаря")
     void successfulLogin() {
@@ -35,6 +37,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("2. Логин с неверным паролем")
     @Description("Проверка сообщения об ошибке при неверном пароле")
     void loginWithWrongPassword() {
@@ -46,6 +49,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(3)
     @DisplayName("3. Логин заблокированного пользователя")
     @Description("Проверка сообщения для locked_out_user")
     void loginLockedOutUser() {
@@ -57,6 +61,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("4. Логин с пустыми полями")
     @Description("Проверка сообщения при пустых username и password")
     void loginWithEmptyFields() {
@@ -68,6 +73,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    @Order(5)
     @DisplayName("5. Логин performance_glitch_user")
     @Description("Проверка успешного логина с учётом возможных задержек производительности")
     void loginPerformanceGlitchUser() {
